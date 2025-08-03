@@ -9,30 +9,30 @@ export class Appointment {
     id: string;
 
     @ApiProperty({ description: 'ID of the doctor for this appointment' })
-    @Column({ type: 'uuid' })
+    @Column({ name: 'doctor_id', type: 'uuid' })
     doctorId: string;
 
     @ManyToOne(() => Doctor, doctor => doctor.appointments, { onDelete: 'CASCADE' })
-    @JoinColumn({ name: 'doctorId' })
+    @JoinColumn({ name: 'doctor_id' })
     doctor: Doctor;
 
     @ApiProperty({ description: 'Name of the patient', example: 'Alice Johnson' })
-    @Column()
+    @Column({ name: 'patient_name' })
     patientName: string;
 
     @ApiProperty({ description: 'Start time of the appointment' })
-    @Column({ type: 'timestamptz' })
+    @Column({ name: 'start_time', type: 'timestamptz' })
     startTime: Date;
 
     @ApiProperty({ description: 'End time of the appointment' })
-    @Column({ type: 'timestamptz' })
+    @Column({ name: 'end_time', type: 'timestamptz' })
     endTime: Date;
 
     @ApiProperty({ description: 'Timestamp of creation' })
-    @CreateDateColumn()
+    @CreateDateColumn({ name: 'created_at', type: 'timestamptz' })
     createdAt: Date;
 
     @ApiProperty({ description: 'Timestamp of last update' })
-    @UpdateDateColumn()
+    @UpdateDateColumn({ name: 'updated_at', type: 'timestamptz' })
     updatedAt: Date;
 }

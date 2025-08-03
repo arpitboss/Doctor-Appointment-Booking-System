@@ -24,7 +24,7 @@ import { Appointment } from './appointments/entities/appointment.entity';
         password: configService.get<string>('DB_PASSWORD'),
         database: configService.get<string>('DB_DATABASE'),
         entities: [Doctor, Appointment],
-        synchronize: true,
+        synchronize: false,
       }),
     }),
 

@@ -16,14 +16,14 @@ export class Doctor {
     @Column()
     specialization: string;
 
-    @OneToMany(() => Appointment, (appointment: Appointment) => appointment.doctor)
+    @OneToMany(() => Appointment, appointment => appointment.doctor)
     appointments: Appointment[];
 
     @ApiProperty({ description: 'Timestamp of creation' })
-    @CreateDateColumn()
+    @CreateDateColumn({ name: 'created_at', type: 'timestamptz' })
     createdAt: Date;
 
     @ApiProperty({ description: 'Timestamp of last update' })
-    @UpdateDateColumn()
+    @UpdateDateColumn({ name: 'updated_at', type: 'timestamptz' })
     updatedAt: Date;
 }
