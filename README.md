@@ -1,98 +1,126 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# 🩺 Doctor Appointment Booking System - NestJS Backend
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+This repository contains the backend implementation for a Doctor Appointment Booking System, built with **NestJS**. It's designed to be a robust, scalable, and well-documented solution that follows clean architecture principles and RESTful API conventions.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+---
 
-## Description
+## 🎯 Objective
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+The primary goal of this project is to create a real-world backend system for managing doctor appointments. This includes designing data models, implementing core business logic for booking, and exposing a clean, intuitive REST API for client applications.
 
-## Project setup
+---
 
-```bash
-$ npm install
-```
+## ✨ Features
 
-## Compile and run the project
+- **Doctor Management**:
+  - Create new doctor profiles.
+  - View a list of all doctors.
+  - Filter doctors by `specialization`.
+  - Paginate results for doctor lists.
+- **Appointment Scheduling**:
+  - View available time slots for a specific doctor on a given date.
+  - Book a new appointment.
+  - **Business Rule Enforcement**: Prevents double-booking and overlapping appointments for the same doctor at the database level.
+- **API Documentation**:
+  - Integrated **Swagger (OpenAPI)** for interactive API documentation.
 
-```bash
-# development
-$ npm run start
+---
 
-# watch mode
-$ npm run start:dev
+## 🛠️ Tech Stack
 
-# production mode
-$ npm run start:prod
-```
+- **Framework**: [NestJS](https://nestjs.com/) (TypeScript)
+- **Database**: [PostgreSQL](https://www.postgresql.org/)
+- **ORM**: [TypeORM](https://typeorm.io/)
+- **Validation**: `class-validator` and `class-transformer`
+- **API Documentation**: Swagger
 
-## Run tests
+---
 
-```bash
-# unit tests
-$ npm run test
+## 📋 Prerequisites
 
-# e2e tests
-$ npm run test:e2e
+Before you begin, ensure you have the following installed on your local machine:
 
-# test coverage
-$ npm run test:cov
-```
+- [Node.js](https://nodejs.org/en/) (v16 or higher)
+- [npm](https://www.npmjs.com/) or [Yarn](https://yarnpkg.com/)
+- [PostgreSQL](https://www.postgresql.org/download/)
+- [Git](https://git-scm.com/)
 
-## Deployment
+---
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+## 🚀 Setup and Installation
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/arpitboss/Doctor-Appointment-Booking-System
+    cd doctor-booking-api
+    ```
 
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
-```
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+3.  **Set up the database:**
+    -   Log in to PostgreSQL and create a new database.
+        ```sql
+        CREATE DATABASE doctor_booking_db;
+        ```
 
-## Resources
+4.  **Configure environment variables:**
+    -   Create a `.env` file in the root of the project by copying the example file:
+        ```bash
+        cp .env
+        ```
+    -   Open the `.env` file and update the database connection details (`DB_HOST`, `DB_PORT`, `DB_USERNAME`, `DB_PASSWORD`, `DB_DATABASE`).
 
-Check out a few resources that may come in handy when working with NestJS:
+---
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+## ▶️ Running the Application
 
-## Support
+1.  **Start the development server:**
+    ```bash
+    npm run start:dev
+    ```
+    The application will be running on `http://localhost:3000`.
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+2.  **Access API Documentation:**
+    -   Once the server is running, you can access the interactive Swagger documentation at:
+        `http://localhost:3000/api-docs`
 
-## Stay in touch
+---
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+## 🌱 Seeding the Database
 
-## License
+To populate the database with initial sample data (a list of doctors), run the seed script.
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+1.  **Run the seed script:**
+    ```bash
+    npm run seed
+    ```
+    *Note: This requires adding a `"seed": "ts-node src/seed.ts"` script to your `package.json` file and installing `ts-node` as a dev dependency (`npm install -D ts-node`).*
+
+---
+
+## 🔗 API Endpoints
+
+All endpoints are versioned under `/v1`.
+
+| Method | Path                                         | Description                                  |
+| :----- | :------------------------------------------- | :------------------------------------------- |
+| `POST` | `/v1/doctors`                                | Create a new doctor.                         |
+| `GET`  | `/v1/doctors`                                | Get a list of doctors (supports filtering).  |
+| `GET`  | `/v1/doctors/:id`                            | Get a single doctor by their ID.             |
+| `GET`  | `/v1/appointments/doctors/:id/available-slots` | Get available slots for a doctor on a date.  |
+| `POST` | `/v1/appointments`                           | Book a new appointment.                      |
+
+For detailed information on request bodies, query parameters, and responses, please refer to the Swagger documentation at `http://localhost:3000/api-docs`.
+
+---
+
+## 🧠 System Design and Decisions
+
+-   **Database-Level Constraints**: The core business rule of preventing overlapping appointments is enforced directly in the PostgreSQL database using an `EXCLUDE` constraint with a `tsrange` (time range) type. This is highly efficient and guarantees data integrity at the lowest level, preventing race conditions that might occur if the check were only in the application layer.
+-   **Modular Structure**: The application is divided into `DoctorsModule` and `AppointmentsModule`. This separation of concerns makes the codebase easier to understand, maintain, and scale.
+-   **DTOs and Validation**: All incoming data is validated using Data Transfer Objects (DTOs) with `class-validator` decorators. This ensures that the service layer always receives data in the expected shape and format, preventing common errors.
+-   **Asynchronous Operations**: All database operations and service methods are asynchronous (using `async/await`), ensuring the application remains non-blocking and can handle concurrent requests efficiently.
+-   **Configuration Management**: The `ConfigModule` is used to manage environment variables, separating configuration from code and making it easy to run the application in different environments (development, staging, production).
