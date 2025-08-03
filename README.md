@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 # 🩺 Doctor Appointment Booking System - NestJS Backend
 
 This repository contains the backend implementation for a Doctor Appointment Booking System, built with **NestJS**. It's designed to be a robust, scalable, and well-documented solution that follows clean architecture principles and RESTful API conventions.
@@ -126,4 +124,3 @@ For detailed information on request bodies, query parameters, and responses, ple
 -   **DTOs and Validation**: All incoming data is validated using Data Transfer Objects (DTOs) with `class-validator` decorators. This ensures that the service layer always receives data in the expected shape and format, preventing common errors.
 -   **Asynchronous Operations**: All database operations and service methods are asynchronous (using `async/await`), ensuring the application remains non-blocking and can handle concurrent requests efficiently.
 -   **Configuration Management**: The `ConfigModule` is used to manage environment variables, separating configuration from code and making it easy to run the application in different environments (development, staging, production).
->>>>>>> d05a147112c4634823cfff75b023e714ea8e154a
