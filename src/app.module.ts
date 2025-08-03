@@ -8,15 +8,11 @@ import { Appointment } from './appointments/entities/appointment.entity';
 
 @Module({
   imports: [
-    // --- Configuration Module ---
-    // Loads environment variables from a .env file.
     ConfigModule.forRoot({
-      isGlobal: true, // Make the ConfigService available application-wide
+      isGlobal: true,
       envFilePath: '.env',
     }),
 
-    // --- TypeORM Module (Database Connection) ---
-    // Configures the connection to the PostgreSQL database using settings from .env.
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
@@ -28,11 +24,10 @@ import { Appointment } from './appointments/entities/appointment.entity';
         password: configService.get<string>('DB_PASSWORD'),
         database: configService.get<string>('DB_DATABASE'),
         entities: [Doctor, Appointment],
-        synchronize: true, // DEV ONLY: Automatically create DB schema. Use migrations in production.
+        synchronize: true,
       }),
     }),
 
-    // --- Feature Modules ---
     DoctorsModule,
     AppointmentsModule,
   ],

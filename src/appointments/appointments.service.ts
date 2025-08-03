@@ -15,15 +15,11 @@ export class AppointmentsService {
         private readonly doctorRepository: Repository<Doctor>,
     ) { }
 
-    /**
-     * Generates available appointment slots for a doctor on a given date.
-     * Assumes standard working hours (9am-5pm) and 30-minute slots.
-     */
     async getAvailableSlots(doctorId: string, date: string): Promise<string[]> {
         await this.findDoctorOrFail(doctorId);
 
-        const startOfDay = dayjs(date).startOf('day').hour(9); // 9:00 AM
-        const endOfDay = dayjs(date).startOf('day').hour(17); // 5:00 PM
+        const startOfDay = dayjs(date).startOf('day').hour(9);
+        const endOfDay = dayjs(date).startOf('day').hour(17);
 
         const bookedAppointments = await this.appointmentRepository.find({
             where: {
@@ -50,10 +46,6 @@ export class AppointmentsService {
         return availableSlots;
     }
 
-    /**
-     * Books a new appointment.
-     * It validates the doctor's existence and checks for overlapping appointments.
-     */
     async bookAppointment(createAppointmentDto: CreateAppointmentDto): Promise<Appointment> {
         const { doctorId, patientName, startTime } = createAppointmentDto;
 
@@ -76,11 +68,9 @@ export class AppointmentsService {
         try {
             return await this.appointmentRepository.save(newAppointment);
         } catch (error) {
-            // Catches the unique constraint violation from the database schema
             if (error.code === '23P01' || (error.detail && error.detail.includes('conflicts with existing key'))) {
                 throw new ConflictException('This time slot is already booked for the selected doctor.');
             }
-            // Re-throw other errors
             throw error;
         }
     }
