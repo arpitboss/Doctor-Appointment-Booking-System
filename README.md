@@ -119,7 +119,7 @@ For detailed information on request bodies, query parameters, and responses, ple
 
 ## 🧠 System Design and Decisions
 
--   **Database-Level Constraints**: The core business rule of preventing overlapping appointments is enforced directly in the PostgreSQL database using an `EXCLUDE` constraint with a `tsrange` (time range) type. This is highly efficient and guarantees data integrity at the lowest level, preventing race conditions that might occur if the check were only in the application layer.
+-   **Database-Level Constraints**: The core business rule of preventing overlapping appointments is enforced directly in the PostgreSQL database using an `EXCLUDE` constraint with a `tstzrange` (time range) type. This is highly efficient and guarantees data integrity at the lowest level, preventing race conditions that might occur if the check were only in the application layer.
 -   **Modular Structure**: The application is divided into `DoctorsModule` and `AppointmentsModule`. This separation of concerns makes the codebase easier to understand, maintain, and scale.
 -   **DTOs and Validation**: All incoming data is validated using Data Transfer Objects (DTOs) with `class-validator` decorators. This ensures that the service layer always receives data in the expected shape and format, preventing common errors.
 -   **Asynchronous Operations**: All database operations and service methods are asynchronous (using `async/await`), ensuring the application remains non-blocking and can handle concurrent requests efficiently.
